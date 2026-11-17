@@ -1,59 +1,62 @@
-"use client";
+"use client"
+import styles from "./test.module.css"
+import {useState} from "react";
 
-import { useState } from "react";
-import "./Calculator.css"; // 👈 Alag wali CSS file yahan jod di
+export default function Test(){
+ const [todo, setTodo] =  useState("");
 
-export default function Calculator() {
-  const [input, setInput] = useState("");
-  const [result, setResult] = useState("");
+  const clear = () => {
+    setTodo("");
+  }
 
-  const handlePress = (val) => {
-    setInput(input + val);
-  };
 
-  const calculate = () => {
-    try {
-      setResult(String(eval(input)));
-    } catch {
-      setResult("Error");
+  const add = (ok) => {
+    setTodo((prev) => prev + ok)
+  }
+
+const delet = () => {
+  setTodo((prev) => prev.slice(0, -1))
+}
+
+
+  const equal = () => {
+    if(todo.includes("/0")){
+      setTodo("लौडा ले ले 🖕🖕🖕");
+      return;
     }
-  };
+    setTodo(eval(todo).toString());
+  }
+  
+  return(
+    <>
+      <div className={styles.parent}>
+        <div className={styles.box}>
+          <div>
+            <input
+              type="text"
+              name="todo"  
+              readOnly
+              onChange={(e) => setTodo(e.target.value)}
+              value={todo}
+              className={styles.inpt}
+              />
+          </div>
 
-  const clearAll = () => {
-    setInput("");
-    setResult("");
-  };
-
-  return (
-    <div className="calc-box">
-      {/* Screen */}
-      <div className="screen">
-        <p>{input || "0"}</p>
-        <h2>{result || "0"}</h2>
+          <div className={styles.gtid}>
+          <button onClick={() => clear()} className={styles.allBtn}>AC</button>
+          <button onClick={() => add("%")} className={styles.allBtn}>%</button>
+          <button onClick={() => delet()} className={styles.allBtn}>X</button>
+          <button onClick={() => add("/")} className={styles.allBtn}>/</button>
+          </div>
+          
+          <div className={styles.gtid}>
+            {["7", "8", "9", "*", "4", "5", "6", "-", "1", "2", "3", "+", "00", "0", "."]
+            .map((curl, index) => (<button key={index} onClick={() => add(curl)} className={styles.allBtn}>{curl}</button>))}
+            <button onClick={() => equal()} className={styles.allBtn}>=</button>
+          </div>
+          
+        </div>
       </div>
-
-      {/* Buttons */}
-      <div className="btn-grid">
-        {["7", "8", "9"].map((num) => (
-          <button key={num} onClick={() => handlePress(num)}>{num}</button>
-        ))}
-        <button className="btn-operator" onClick={() => handlePress("/")}>/</button>
-
-        {["4", "5", "6"].map((num) => (
-          <button key={num} onClick={() => handlePress(num)}>{num}</button>
-        ))}
-        <button className="btn-operator" onClick={() => handlePress("*")}>*</button>
-
-        {["1", "2", "3"].map((num) => (
-          <button key={num} onClick={() => handlePress(num)}>{num}</button>
-        ))}
-        <button className="btn-operator" onClick={() => handlePress("-")}>-</button>
-
-        <button className="btn-clear" onClick={clearAll}>C</button>
-        <button onClick={() => handlePress("0")}>0</button>
-        <button className="btn-equal" onClick={calculate}>=</button>
-        <button className="btn-operator" onClick={() => handlePress("+")}>+</button>
-      </div>
-    </div>
-  );
+    </>
+  )
 }
