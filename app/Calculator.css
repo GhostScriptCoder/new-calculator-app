@@ -1,60 +1,40 @@
-.calc-box {
-  width: 260px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #1e1e1e;
-  border-radius: 12px;
-  color: white;
-  font-family: sans-serif;
+.parent{
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
-.screen {
-  background-color: #2d2d2d;
-  padding: 15px;
-  border-radius: 8px;
+
+
+.inpt{
+  width: 100%;
   text-align: right;
-  margin-bottom: 15px;
+  outline: 0;
+  border-radius: 5px;
+  height: 70px;
+  font-size: 50px;
 }
 
-.screen p {
-  margin: 0;
-  color: #aaa;
-  font-size: 14px;
-}
-
-.screen h2 {
-  margin: 5px 0 0 0;
-  font-size: 28px;
-}
-
-.btn-grid {
+.gtid{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(4, 4fr);
+  gap: 20px;
+  margin-top: 20px;
 }
 
-.btn-grid button {
-  padding: 15px;
-  font-size: 18px;
-  border: none;
-  border-radius: 6px;
-  background-color: #3a3a3a;
-  color: white;
-  cursor: pointer;
+
+.allBtn{
+  background: transparent;
+  border: 0.5px solid hwb(0 91% 7% / 0.4235294117647059);
+  font-size: 40px;
+  color: #dad6d6bc;
+  border-radius: 7px;
 }
 
-.btn-grid button:active {
-  background-color: #555;
-}
 
-.btn-operator {
-  background-color: #ff9500 !important;
-}
-
-.btn-clear {
-  background-color: #ff3b30 !important;
-}
-
-.btn-equal {
-  background-color: #34c759 !important;
+.allBtn:active{
+  color: #000;
+  background: linear-gradient(60deg, #dad6d6bc, #000);
 }
