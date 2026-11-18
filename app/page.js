@@ -50,7 +50,7 @@ const delet = () => {
           </div>
           
           <div className="gtid">
-            {["7", "8", "9", "X", "4", "5", "6", "-", "1", "2", "3", "+", "00", "0", "."]
+            {["7", "8", "9", "*", "4", "5", "6", "-", "1", "2", "3", "+", "00", "0", "."]
             .map((curl, index) => (<button key={index} onClick={() => add(curl)} className="allBtn">{curl}</button>))}
             <button onClick={() => equal()} className="allBtn">=</button>
           </div>
